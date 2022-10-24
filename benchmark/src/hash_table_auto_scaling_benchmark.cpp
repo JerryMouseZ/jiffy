@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <vector>
 #include <thread>
 #include <boost/program_options.hpp>
@@ -50,7 +51,7 @@ std::vector<std::string> keygenerator(std::size_t num_keys, double theta = 0, in
 }
 
 int main() {
-  size_t num_ops = 419430;
+  int64_t num_ops = 419430;
   std::vector<std::string> keys = keygenerator(num_ops);
   std::string address = "127.0.0.1";
   int service_port = 9090;
@@ -79,7 +80,7 @@ int main() {
   uint64_t put_tot_time = 0, put_t0 = 0, put_t1 = 0;
 
   std::atomic_bool stop_{false};
-  std::size_t j = 0;
+  int64_t j = 0;
   auto worker_ = std::thread([&] {
     std::ofstream out("dataset.trace");
     while (!stop_.load()) {
