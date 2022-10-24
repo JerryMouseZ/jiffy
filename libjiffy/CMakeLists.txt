@@ -240,6 +240,8 @@ if (BUILD_STORAGE OR BUILD_DIRECTORY)
             ${HEAP_MANAGER_LIBRARY}
             ${NUMA_LIBRARY}
             ${CMAKE_DL_LIBS}
+            daxctl
+            hwloc
             ${CMAKE_THREAD_LIBS_INIT})
   set_target_properties(jiffy PROPERTIES LINKER_LANGUAGE CXX)
 
@@ -281,7 +283,7 @@ if (BUILD_STORAGE OR BUILD_DIRECTORY)
             test/chain_replication_test.cpp
             test/auto_scaling_test.cpp
             test/test_utils.h)
-    target_link_libraries(jiffy_tests jiffy)
+    target_link_libraries(jiffy_tests jiffy daxctl hwloc)
     add_dependencies(jiffy_tests catch_ep boost_ep ${HEAP_MANAGER_EP} thrift_ep)
     # Register test
     add_test(JiffyTest jiffy_tests)
@@ -397,7 +399,10 @@ if (BUILD_CPP_CLIENT)
           ${HEAP_MANAGER_LIBRARY}
           ${LIBEVENT_LIBRARY}
           ${CMAKE_DL_LIBS}
-          ${CMAKE_THREAD_LIBS_INIT})
+          ${CMAKE_THREAD_LIBS_INIT}
+          daxctl
+          hwloc
+          )
   set_target_properties(jiffy_client PROPERTIES LINKER_LANGUAGE CXX)
 
   install(TARGETS jiffy_client
