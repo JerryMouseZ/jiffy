@@ -1,6 +1,7 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
+#include <mutex>
 #include "random_block_allocator.h"
 #include "../../utils/rand_utils.h"
 

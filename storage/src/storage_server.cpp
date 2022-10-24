@@ -7,6 +7,7 @@
 #include <jiffy/storage/service/block_server.h>
 #include <jiffy/utils/signal_handling.h>
 #include <jiffy/utils/logger.h>
+#include <condition_variable>
 #include <jiffy/utils/mem_utils.h>
 #include <boost/program_options.hpp>
 #include <ifaddrs.h>
